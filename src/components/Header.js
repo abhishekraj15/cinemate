@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import Logo from "../assets/logo.png";
 
@@ -7,16 +7,16 @@ const Header = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [hidden, setHidden] = useState(true);
   const [isDark, setIsDark] = useState(
-    JSON.parse(localStorage.getItem("darkMode")) || true
+    JSON.parse(localStorage.getItem("dark")) || true
   );
-  // useEffect(() => {
-  //   localStorage.setItem("darkMode", JSON.stringify(isDark));
-  //   if (isDark) {
-  //     document.documentElement.classList.add("dark");
-  //   } else {
-  //     document.documentElement.classList.remove("dark");
-  //   }
-  // }, [isDark]);
+  useEffect(() => {
+    localStorage.setItem("darkMode", JSON.stringify(isDark));
+    if (isDark) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [isDark]);
 
   //   useEffect(() => {
   //     localStorage.setItem("darkMode", JSON.stringify(isDark));
